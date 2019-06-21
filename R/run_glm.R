@@ -90,7 +90,8 @@ glm.systemcall <- function(sim_folder = sim_folder, glm_path = glm_path, verbose
     setwd(origin)
   })
 }
-  
+
+### Windows ###
 run_glm2.2_Win <- function(sim_folder, verbose, args){
   if(.Platform$r_arch == 'i386'){
     glm_path <- system.file('extbin/glm_2.2.0_x32/glm.exe', package=packageName())
@@ -106,8 +107,9 @@ run_glm3.0_Win <- function(sim_folder, verbose, args){
     glm.systemcall(sim_folder, glm_path, verbose, args)
 }
 
+### macOS ###
 run_glm3.0_OSx <- function(sim_folder, verbose, args){
-  glm_path <- system.file('exec/macglm3', package = 'GLMr')
+  glm_path <- system.file('exec/macglm3', package=packageName())
   glm.systemcall(sim_folder, glm_path, verbose, args)
   
 }
