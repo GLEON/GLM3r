@@ -7,7 +7,7 @@
 #'@param sim_folder the directory where simulation files are contained
 #'@param version GLM version. Default is '3.0'. Can also choose '2.2'
 #'@param verbose Logical: Should output of GLM be shown
-#'@param args Optional arguments to pass to GLM executable
+#'@param system.args Optional arguments to pass to GLM executable
 #'
 #'@keywords methods
 #'@author
@@ -25,7 +25,7 @@
 #' }
 #'@export
 #'@importFrom utils packageName
-run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, args=character()) {
+run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, system.args=character()) {
 	
   # Must have .nml file in sim folder. Can be either glm2.nml or glm3.nml
 	if(!any((c('glm2.nml','glm3.nml') %in% list.files(sim_folder)))){
@@ -36,9 +36,9 @@ run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, args=charac
 	### Windows ###
 	if(.Platform$pkgType == "win.binary"){
 	  if(version == '3.0'){
-		  return(run_glm3.0_Win(sim_folder, verbose, args))
+		  return(run_glm3.0_Win(sim_folder, verbose, system.args))
 	  } else if (version == '2.2') {
-	    return(run_glm2.2_Win(sim_folder, verbose, args))
+	    return(run_glm2.2_Win(sim_folder, verbose, system.args))
 	  }
 	}
   
@@ -52,9 +52,9 @@ run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, args=charac
     }
     
     if(version == '3.0'){
-      return(run_glm3.0_OSx(sim_folder, verbose, args))
+      return(run_glm3.0_OSx(sim_folder, verbose, system.args))
     } else if (version == '2.2') {
-      return(run_glm2.2_OSx(sim_folder, verbose, args))
+      return(run_glm2.2_OSx(sim_folder, verbose, system.args))
     }
   }
     
@@ -62,26 +62,26 @@ run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, args=charac
 		## Probably running linux
 		#stop("Currently UNIX is not supported by ", getPackageName())
     if(version == '3.0'){
-      return(run_glmNIX(sim_folder, verbose, args))
+      return(run_glmNIX(sim_folder, verbose, system.args))
     } else if (version == '2.2') {
-      return(run_glmNIX(sim_folder, verbose, args))
+      return(run_glmNIX(sim_folder, verbose, system.args))
     }
 	}
 	
 }
 
   
-glm.systemcall <- function(sim_folder = sim_folder, glm_path = glm_path, verbose = verbose, args = args) {
+glm.systemcall <- function(sim_folder, glm_path, verbose, system.args) {
   origin <- getwd()
   setwd(sim_folder)
   
   tryCatch({
     if (verbose){
       out <- system2(glm_path, wait = TRUE, stdout = "", 
-                     stderr = "", args=args)
+                     stderr = "", args = system.args)
     } else {
       out <- system2(glm_path, wait = TRUE, stdout = NULL, 
-                     stderr = NULL, args=args)
+                     stderr = NULL, args = system.args)
     }
     setwd(origin)
     return(out)
@@ -92,38 +92,37 @@ glm.systemcall <- function(sim_folder = sim_folder, glm_path = glm_path, verbose
 }
 
 ### Windows ###
-run_glm2.2_Win <- function(sim_folder, verbose, args){
+run_glm2.2_Win <- function(sim_folder, verbose, system.args){
   if(.Platform$r_arch == 'i386'){
     glm_path <- system.file('extbin/glm_2.2.0_x32/glm.exe', package=packageName())
-    glm.systemcall(sim_folder, glm_path, verbose, args)
+    glm.systemcall(sim_folder, glm_path, verbose, system.args)
   }else{
     glm_path <- system.file('extbin/glm_2.2.0_x64/glm.exe', package=packageName())
-    glm.systemcall(sim_folder, glm_path, verbose, args)
+    glm.systemcall(sim_folder, glm_path, verbose, system.args)
   }
 }
 
-run_glm3.0_Win <- function(sim_folder, verbose, args){
+run_glm3.0_Win <- function(sim_folder, verbose, system.args){
     glm_path <- system.file('extbin/glm_3.0.0_x64/glm.exe', package=packageName())
-    glm.systemcall(sim_folder, glm_path, verbose, args)
+    glm.systemcall(sim_folder, glm_path, verbose, system.args)
 }
 
 ### macOS ###
-run_glm3.0_OSx <- function(sim_folder, verbose, args){
-  glm_path <- system.file('exec/macglm3', package=packageName())
-  glm.systemcall(sim_folder, glm_path, verbose, args)
-  
+run_glm3.0_OSx <- function(sim_folder, verbose, system.args){
+  glm_path <- system.file('exec/macglm3', package = 'GLMr')
+  glm.systemcall(sim_folder = sim_folder, glm_path = glm_path, verbose = verbose, system.args = system.args)
 }
 
-run_glm2.2_OSx <- function(sim_folder, verbose, args){
+run_glm2.2_OSx <- function(sim_folder, verbose, system.args){
   glm_path <- system.file('exec/glm_2.2.0_macos/macglm', package=packageName())
-  glm.systemcall(sim_folder, glm_path, verbose, args)
+  glm.systemcall(sim_folder, glm_path, verbose, system.args)
 }
 
-run_glmNIX <- function(sim_folder, verbose, args){
+run_glmNIX <- function(sim_folder, verbose, system.args){
   glm_path <- system.file('exec/nixglm', package=packageName())
   
   Sys.setenv(LD_LIBRARY_PATH=system.file('extbin/nixGLM', 
                                          package=packageName()))
-  glm.systemcall(sim_folder, glm_path, verbose, args)
+  glm.systemcall(sim_folder, glm_path, verbose, system.args)
 
 }
