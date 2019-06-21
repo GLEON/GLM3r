@@ -107,7 +107,7 @@ run_glm3.0_Win <- function(sim_folder, verbose, args){
 }
 
 run_glm3.0_OSx <- function(sim_folder, verbose, args){
-  glm_path <- system.file('exec/glm_3.0.0_macos_Mojave/macglm3', package=packageName())
+  glm_path <- system.file('exec/macglm3', package = 'GLMr')
   glm.systemcall(sim_folder, glm_path, verbose, args)
   
 }
