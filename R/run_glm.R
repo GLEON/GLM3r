@@ -102,7 +102,7 @@ run_glm3OSx <- function(sim_folder, verbose = TRUE, args){
   
   # lib_path <- system.file('extbin/macGLM/bin', package='GLMr')
   
-  glm_path <- system.file('exec/glm3', package='GLMr')
+  glm_path <- system.file('exec/macglm3', package='GLMr')
   
   # ship glm and libs to sim_folder
   # Sys.setenv(DYLD_FALLBACK_LIBRARY_PATH=lib_path) #This does not work 
