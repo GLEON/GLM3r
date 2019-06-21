@@ -26,8 +26,8 @@
 #'@importFrom utils packageName
 run_glm <- function(sim_folder = '.', verbose=TRUE, args=character()) {
 	
-	if(!file.exists(file.path(sim_folder, 'glm2.nml'))){
-		stop('You must have a valid glm2.nml file in your sim_folder: ', sim_folder)
+	if(!any((c('glm2.nml','glm3.nml') %in% list.files(sim_folder)))){
+		stop('You must have a valid glm2.nml or glm3.nml file in your sim_folder: ', sim_folder)
 	}
 	
 	#Just going to brute force this at the moment.
