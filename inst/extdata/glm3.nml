@@ -34,7 +34,7 @@
    timefmt = 3
    start = '2000-04-15'
    stop = '2000-12-10'
-   dt = 7200
+   dt = 3600
    timezone = -6
    num_days = 150
 /
