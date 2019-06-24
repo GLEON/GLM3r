@@ -4,13 +4,10 @@
 \alias{run_glm}
 \title{run the GLM model}
 \usage{
-run_glm(sim_folder = ".", version = "3.0", verbose = TRUE,
-  system.args = character())
+run_glm(sim_folder = ".", verbose = TRUE, system.args = character())
 }
 \arguments{
 \item{sim_folder}{the directory where simulation files are contained}
-
-\item{version}{GLM version. Default is '3.0'. Can also choose '2.2'}
 
 \item{verbose}{Logical: Should output of GLM be shown}
 
@@ -24,15 +21,14 @@ The specified \code{sim_folder} must contain a valid NML file.
 sim_folder <- system.file('extdata', package = 'GLMr')
 run_glm(sim_folder)
 \dontrun{
-out_file <- file.path(sim_folder,'output.nc')
-nml_file <- file.path(sim_folder,'glm2.nml')
+out_file <- file.path(sim_folder,'Output/output.nc')
+nml_file <- file.path(sim_folder,'glm3.nml')
 library(glmtools)
-fig_path <- tempfile("temperature", fileext = '.png')
-plot_temp(file = out_file, fig_path = fig_path)
+plot_temp(nc_file = out_file)
 cat('find plot here: '); cat(fig_path)
 }
 }
 \author{
-Jordan Read, Luke Winslow
+Jordan Read, Luke Winslow, Hilary Dugan
 }
 \keyword{methods}
