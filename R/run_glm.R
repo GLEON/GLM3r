@@ -23,8 +23,8 @@
 #'plot_temp(file = out_file, fig_path = fig_path)
 #'cat('find plot here: '); cat(fig_path)
 #' }
-#'@export
 #'@importFrom utils packageName
+#'@export
 run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, system.args=character()) {
 	
   # Must have .nml file in sim folder. Can be either glm2.nml or glm3.nml
