@@ -4,7 +4,7 @@ Title: A General Lake Model (GLM) base package
 Version: 3.1.16
 URL: https://github.com/GLEON/GLMr
 BugReports: https://github.com/GLEON/GLMr/issues
-Authors@R: c( person("Jordan", "Read", role = c("aut","cre"),
+Authors@R: c( person("Jordan", "Read", role = c("aut"),
     email = "jread@usgs.gov"),
     person("Luke", "Winslow", role = c("aut","cre"),
     email = "lwinslow@usgs.gov"), 
