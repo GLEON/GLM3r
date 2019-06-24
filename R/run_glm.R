@@ -5,41 +5,35 @@
 #'The specified \code{sim_folder} must contain a valid NML file.
 #'
 #'@param sim_folder the directory where simulation files are contained
-#'@param version GLM version. Default is '3.0'. Can also choose '2.2'
 #'@param verbose Logical: Should output of GLM be shown
 #'@param system.args Optional arguments to pass to GLM executable
 #'
 #'@keywords methods
 #'@author
-#'Jordan Read, Luke Winslow
+#'Jordan Read, Luke Winslow, Hilary Dugan 
 #'@examples 
 #'sim_folder <- system.file('extdata', package = 'GLMr')
 #'run_glm(sim_folder)
 #'\dontrun{
-#'out_file <- file.path(sim_folder,'output.nc')
-#'nml_file <- file.path(sim_folder,'glm2.nml')
+#'out_file <- file.path(sim_folder,'Output/output.nc')
+#'nml_file <- file.path(sim_folder,'glm3.nml')
 #'library(glmtools)
-#'fig_path <- tempfile("temperature", fileext = '.png')
-#'plot_temp(file = out_file, fig_path = fig_path)
+#'plot_temp(nc_file = out_file)
 #'cat('find plot here: '); cat(fig_path)
 #' }
 #'@importFrom utils packageName
 #'@export
-run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, system.args=character()) {
+run_glm <- function(sim_folder = '.', verbose=TRUE, system.args=character()) {
 	
   # Must have .nml file in sim folder. Can be either glm2.nml or glm3.nml
-	if(!any((c('glm2.nml','glm3.nml') %in% list.files(sim_folder)))){
-		stop('You must have a valid glm2.nml or glm3.nml file in your sim_folder: ', sim_folder)
+	if(!'glm3.nml' %in% list.files(sim_folder)){
+		stop('You must have a valid glm3.nml file in your sim_folder: ', sim_folder)
 	}
 	
 
 	### Windows ###
 	if(.Platform$pkgType == "win.binary"){
-	  if(version == '3.0'){
-		  return(run_glm3.0_Win(sim_folder, verbose, system.args))
-	  } else if (version == '2.2') {
-	    return(run_glm2.2_Win(sim_folder, verbose, system.args))
-	  }
+		return(run_glm3.0_Win(sim_folder, verbose, system.args))
 	}
   
   ### macOS ###
@@ -51,21 +45,14 @@ run_glm <- function(sim_folder = '.', version = '3.0', verbose=TRUE, system.args
       stop('pre-mavericks mac OSX is not supported. Consider upgrading')
     }
     
-    if(version == '3.0'){
-      return(run_glm3.0_OSx(sim_folder, verbose, system.args))
-    } else if (version == '2.2') {
-      return(run_glm2.2_OSx(sim_folder, verbose, system.args))
-    }
+    return(run_glm3.0_OSx(sim_folder, verbose, system.args))
+   
   }
     
   if(.Platform$pkgType == "source") {
 		## Probably running linux
 		#stop("Currently UNIX is not supported by ", getPackageName())
-    if(version == '3.0'){
       return(run_glmNIX(sim_folder, verbose, system.args))
-    } else if (version == '2.2') {
-      return(run_glmNIX(sim_folder, verbose, system.args))
-    }
 	}
 	
 }
@@ -92,16 +79,6 @@ glm.systemcall <- function(sim_folder, glm_path, verbose, system.args) {
 }
 
 ### Windows ###
-run_glm2.2_Win <- function(sim_folder, verbose, system.args){
-  if(.Platform$r_arch == 'i386'){
-    glm_path <- system.file('extbin/glm_2.2.0_x32/glm.exe', package=packageName())
-    glm.systemcall(sim_folder, glm_path, verbose, system.args)
-  }else{
-    glm_path <- system.file('extbin/glm_2.2.0_x64/glm.exe', package=packageName())
-    glm.systemcall(sim_folder, glm_path, verbose, system.args)
-  }
-}
-
 run_glm3.0_Win <- function(sim_folder, verbose, system.args){
     glm_path <- system.file('extbin/glm_3.0.0_x64/glm.exe', package=packageName())
     glm.systemcall(sim_folder, glm_path, verbose, system.args)
@@ -113,11 +90,7 @@ run_glm3.0_OSx <- function(sim_folder, verbose, system.args){
   glm.systemcall(sim_folder = sim_folder, glm_path = glm_path, verbose = verbose, system.args = system.args)
 }
 
-run_glm2.2_OSx <- function(sim_folder, verbose, system.args){
-  glm_path <- system.file('exec/glm_2.2.0_macos/macglm', package=packageName())
-  glm.systemcall(sim_folder, glm_path, verbose, system.args)
-}
-
+### Linux ###
 run_glmNIX <- function(sim_folder, verbose, system.args){
   glm_path <- system.file('exec/nixglm', package=packageName())
   

@@ -2,7 +2,7 @@ context("run example simulation")
 
 test_that("running glm simulation", {
   sim_folder <- system.file('extdata', package = 'GLMr')
-  status = run_glm(sim_folder, version = '3.0')
+  status = run_glm(sim_folder)
   
   expect_equivalent(status, 0)
   
