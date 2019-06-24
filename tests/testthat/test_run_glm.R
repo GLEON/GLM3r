@@ -6,6 +6,6 @@ test_that("running glm simulation", {
   
   expect_equivalent(status, 0)
   
-  expect_true(file.exists(file.path(sim_folder, 'output.nc')))
+  expect_true(file.exists(file.path(sim_folder, 'output/output.nc')))
   
 })
