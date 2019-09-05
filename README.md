@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-GLMr
+GLM3r
 ====
 
 | Linux                                                                                                   | Windows                                                                                                                                   |
@@ -9,16 +9,16 @@ GLMr
 
 [![DOI](https://zenodo.org/badge/23404/GLEON/GLMr.svg)](https://zenodo.org/badge/latestdoi/23404/GLEON/GLMr)
 
-R package for basic [GLM](http://aed.see.uwa.edu.au/research/models/GLM/) model running. `GLMr` is designed to hold the most current version of the General Lake Model (GLM) for linux, mac, and windows platforms. This package does not contain the source code for the model, only the executable, and functions for handling the various platform requirements for running the model. Also, use `glm_version()` to figure out what version of GLM you are running.
+R package for basic [GLM](http://aed.see.uwa.edu.au/research/models/GLM/) model running. `GLM3r` is designed to hold the most current version of the General Lake Model (GLM) for linux, mac, and windows platforms. This package does not contain the source code for the model, only the executable, and functions for handling the various platform requirements for running the model. Also, use `glm_version()` to figure out what version of GLM you are running.
 
 Installation
 ------------
 
-You can install GLMr from Github with:
+You can install GLM3r from Github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("GLEON/GLMr")
+devtools::install_github("GLEON/GLM3r")
 ```
 
 Usage
@@ -27,9 +27,9 @@ Usage
 ### Run
 
 ``` r
-library(GLMr)
+library(GLM3r)
 
-sim_folder <- system.file('extdata', package = 'GLMr')
+sim_folder <- system.file('extdata', package = 'GLM3r')
 
 run_glm(sim_folder)
 ```
