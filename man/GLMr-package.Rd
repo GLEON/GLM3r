@@ -1,6 +1,6 @@
-\name{GLMr-package}
-\alias{GLMr-package}
-\alias{GLMr}
+\name{GLM3r-package}
+\alias{GLM3r-package}
+\alias{GLM3r}
 \docType{package}
 \title{
 An R package containing the core GLM files for Mac, Windows, and Linux
@@ -10,7 +10,7 @@ This package is a handy wrapper for the General Lake Model.
 }
 \details{
 \tabular{ll}{
-Package: \tab GLMr\cr
+Package: \tab GLM3r\cr
 Type: \tab Package\cr
 Version: \tab 2.0.0.6.2\cr
 Date: \tab 2014-09-29\cr
@@ -47,8 +47,8 @@ nml_template_path()
 
 #Prep
 sim_folder = tempdir()
-example_nml <- system.file('extdata', 'glm2.nml', package = 'GLMr')
-example_driver <- system.file('extdata','met_hourly.csv', package = 'GLMr')
+example_nml <- system.file('extdata', 'glm3.nml', package = 'GLM3r')
+example_driver <- system.file('extdata','met_hourly.csv', package = 'GLM3r')
 
 
 #copy the MNL file

@@ -50,7 +50,7 @@ example("run_glm")
 
 ```{ }
 
-Reading config from glm2.nml
+Reading config from glm3.nml
 No WQ config
 No diffuser data, setting default values
 WARNING: Initial profiles problem - epected 0 wd_init_vals entries but got 30
@@ -77,16 +77,16 @@ Wall clock runtime 11 seconds : 00:00:11 [hh:mm:ss]
 ```{r eval=FALSE}
 library(glmtools)
 
-out_file <- file.path(sim_folder, 'output.nc')
-plot_temp(file = out_file)
+out_file <- file.path(sim_folder, 'output/output.nc')
+plot_var(nc_file = out_file, var_name = 'temp')
 
 ```
 
 ```{r echo=FALSE}
 suppressPackageStartupMessages(library(glmtools))
 
-out_file <- file.path(sim_folder, 'output.nc')
-plot_temp(file = out_file)
+out_file <- file.path(sim_folder, 'output/output.nc')
+plot_var(nc_file = out_file, var_name = 'temp')
 
 ```
 
