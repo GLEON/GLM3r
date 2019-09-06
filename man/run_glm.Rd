@@ -18,7 +18,7 @@ This runs the GLM model on the specific simulation stored in \code{sim_folder}.
 The specified \code{sim_folder} must contain a valid NML file.
 }
 \examples{
-sim_folder <- system.file('extdata', package = 'GLMr')
+sim_folder <- system.file('extdata', package = 'GLM3r')
 run_glm(sim_folder)
 \dontrun{
 out_file <- file.path(sim_folder,'Output/output.nc')

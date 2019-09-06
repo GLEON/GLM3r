@@ -1,4 +1,4 @@
 library(testthat)
-library(GLMr)
+library(GLM3r)
 
-test_check("GLMr")
+test_check("GLM3r")

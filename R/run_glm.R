@@ -12,7 +12,7 @@
 #'@author
 #'Jordan Read, Luke Winslow, Hilary Dugan 
 #'@examples 
-#'sim_folder <- system.file('extdata', package = 'GLMr')
+#'sim_folder <- system.file('extdata', package = 'GLM3r')
 #'run_glm(sim_folder)
 #'\dontrun{
 #'out_file <- file.path(sim_folder,'Output/output.nc')
@@ -86,7 +86,7 @@ run_glm3.0_Win <- function(sim_folder, verbose, system.args){
 
 ### macOS ###
 run_glm3.0_OSx <- function(sim_folder, verbose, system.args){
-  glm_path <- system.file('exec/macglm3', package = 'GLMr')
+  glm_path <- system.file('exec/macglm3', package = 'GLM3r')
   glm.systemcall(sim_folder = sim_folder, glm_path = glm_path, verbose = verbose, system.args = system.args)
 }
 
