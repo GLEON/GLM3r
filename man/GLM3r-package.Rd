@@ -13,7 +13,7 @@ This package is a handy wrapper for the General Lake Model.
 Package: \tab GLM3r\cr
 Type: \tab Package\cr
 Version: \tab 2.0.0.6.2\cr
-Date: \tab 2014-09-29\cr
+Date: \tab 2019-09-06\cr
 License: \tab GPL 3.0\cr
 }
 
@@ -26,7 +26,7 @@ nml_template_path \tab Return path to template NML file\cr
 
 }
 \author{
-Luke A Winslow, Jordan S Read
+Luke A Winslow, Jordan S Read, Hilary A. Dugan
 
 Maintainer: Luke Winslow <lwinslow@usgs.gov>
 }
