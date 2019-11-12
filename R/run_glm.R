@@ -94,8 +94,10 @@ run_glm3.0_OSx <- function(sim_folder, verbose, system.args){
 run_glmNIX <- function(sim_folder, verbose, system.args){
   glm_path <- system.file('exec/nixglm', package=packageName())
   
-  Sys.setenv(LD_LIBRARY_PATH=system.file('extbin/nixGLM', 
-                                         package=packageName()))
+  Sys.setenv(LD_LIBRARY_PATH=paste(system.file('extbin/nixGLM', 
+                                         package=packageName()), 
+                                   Sys.getenv('LD_LIBRARY_PATH'), 
+                                   sep = ":"))
   glm.systemcall(sim_folder, glm_path, verbose, system.args)
 
 }
