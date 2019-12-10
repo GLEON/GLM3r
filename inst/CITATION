@@ -1,20 +1,28 @@
 citHeader("To cite GLM in publications use:")
 
 citEntry(entry = "Article", 
-    AUTHOR = {Hipsey, M. R. and Bruce, L. C. and Boon, C. and Busch, B. and Carey, C. C. and Hamilton, D. P. and Hanson, P. C. and Read, J. S. and de Sousa, E. and Weber, M. and Winslow, L. A.},
-TITLE = {A General Lake Model (GLM 3.0) for linking with high-frequency sensor data
-from the Global Lake Ecological Observatory Network (GLEON)},
-JOURNAL = {Geoscientific Model Development},
-VOLUME = {12},
-YEAR = {2019},
-NUMBER = {1},
-PAGES = {473--523},
-URL = {https://www.geosci-model-dev.net/12/473/2019/},
-DOI = {10.5194/gmd-12-473-2019},
-    textVersion = Hipsey MR, Bruce LC, Boon C, Busch B, Carey CC, Hamilton DP, Hanson PC, Read JS, de Sousa E, Weber M, Winslow
-LA (2019). “A General Lake Model (GLM 3.0) for linking with high-frequency sensor data from the Global Lake
-Ecological Observatory Network (GLEON).” Geoscientific Model Development, *12*(1), 473-523. doi:
-10.5194/gmd-12-473-2019 (URL: http://doi.org/10.5194/gmd-12-473-2019), <URL:
-https://www.geosci-model-dev.net/12/473/2019/>.)
+ author = personList(as.person("Matthew R. Hipsey"), 
+                     as.person("Louise C. Bruce"),
+                     as.person("Casper Boon"),
+                     as.person("Brendan Busch"),
+                     as.person("Cayelan Carey"),
+                     as.person("David P. Hamilton"),
+                     as.person("Paul C. Hanson"),
+                     as.person("Jordan S. Read"),
+                     as.person("Eduardo de Sousa"),
+                     as.person("Michael Weber"),
+                     as.person("Luke A. Winslow")),
+TITLE = "A General Lake Model (GLM 3.0) for linking with high-frequency sensor data
+from the Global Lake Ecological Observatory Network (GLEON)",
+JOURNAL = "Geoscientific Model Development",
+VOLUME = "12",
+YEAR = "2019",
+NUMBER = "1",
+PAGES = "473--523",
+URL = "https://www.geosci-model-dev.net/12/473/2019/",
+DOI = "10.5194/gmd-12-473-2019",
+textVersion = paste('Hipsey MR, Bruce LC, Boon C, Busch B, Carey CC, Hamilton DP, Hanson PC, Read JS, de Sousa E, Weber M, Winslow LA (2019). "A General Lake Model (GLM 3.0) for linking with high-frequency sensor data from the Global Lake Ecological Observatory Network (GLEON)." Geoscientific Model Development, 12(1), 473-523. doi:10.5194/gmd-12-473-2019. URL:https://www.geosci-model-dev.net/12/473/2019/'))
 
-citFooter("As GLM changes, this package will change with it, and the citation may change too. Find GLM version with 'glm_version()'.")
+citFooter("As GLM changes, this package will change with it, and the citation may change
+too. Find GLM version with 'glm_version()'.")
+
