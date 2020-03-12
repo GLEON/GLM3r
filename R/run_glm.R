@@ -5,6 +5,7 @@
 #'The specified \code{sim_folder} must contain a valid NML file.
 #'
 #'@param sim_folder the directory where simulation files are contained
+#'@param nml_file filename: of nml file to be passed to GLM executable. Defaults to "glm3.nml"
 #'@param verbose Logical: Should output of GLM be shown
 #'@param system.args Optional arguments to pass to GLM executable
 #'
@@ -23,14 +24,16 @@
 #' }
 #'@importFrom utils packageName
 #'@export
-run_glm <- function(sim_folder = '.', verbose=TRUE, system.args=character()) {
+run_glm <- function(sim_folder = '.', nml_file = "glm3.nml", verbose=TRUE, system.args=character()) {
 	
-  # Must have .nml file in sim folder. Can be either glm2.nml or glm3.nml
-	if(!'glm3.nml' %in% list.files(sim_folder)){
-		stop('You must have a valid glm3.nml file in your sim_folder: ', sim_folder)
+  # Check for nml file in sim_folder
+	if(!nml_file %in% list.files(sim_folder)){
+		stop('You must have a valid .nml file in your sim_folder: ', sim_folder)
 	}
 	
-
+  nml_arg <- paste0("--nml ", nml_file)
+  system.args <- c(nml_arg, system.args)
+  
 	### Windows ###
 	if(.Platform$pkgType == "win.binary"){
 		return(run_glm3.0_Win(sim_folder, verbose, system.args))

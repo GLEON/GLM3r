@@ -4,10 +4,13 @@
 \alias{run_glm}
 \title{run the GLM model}
 \usage{
-run_glm(sim_folder = ".", verbose = TRUE, system.args = character())
+run_glm(sim_folder = ".", nml_file = "glm3.nml", verbose = TRUE,
+  system.args = character())
 }
 \arguments{
 \item{sim_folder}{the directory where simulation files are contained}
+
+\item{nml_file}{filename: of nml file to be passed to GLM executable. Defaults to "glm3.nml"}
 
 \item{verbose}{Logical: Should output of GLM be shown}
 
