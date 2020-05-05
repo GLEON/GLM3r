@@ -4,8 +4,12 @@
 \alias{run_glm}
 \title{run the GLM model}
 \usage{
-run_glm(sim_folder = ".", nml_file = "glm3.nml", verbose = TRUE,
-  system.args = character())
+run_glm(
+  sim_folder = ".",
+  nml_file = "glm3.nml",
+  verbose = TRUE,
+  system.args = character()
+)
 }
 \arguments{
 \item{sim_folder}{the directory where simulation files are contained}
