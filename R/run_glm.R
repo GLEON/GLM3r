@@ -83,7 +83,7 @@ glm.systemcall <- function(sim_folder, glm_path, verbose, system.args) {
 
 ### Windows ###
 run_glm3.0_Win <- function(sim_folder, verbose, system.args){
-    glm_path <- system.file('extbin/glm-3.0.5_x64/glm.exe', package=packageName())
+    glm_path <- system.file('extbin/glm-3.1.0b1/glm.exe', package=packageName())
     glm.systemcall(sim_folder, glm_path, verbose, system.args)
 }
 
