@@ -46,7 +46,7 @@ No WQ config
 No diffuser data, setting default values
 WARNING: Initial profiles problem - epected 0 wd_init_vals entries but got 30
        ------------------------------------------------
-       |  General Lake Model (GLM)   Version 2.2.0rc5    |
+       |  General Lake Model (GLM)   Version 3.1.0b1     |
        ------------------------------------------------
 nDays 165825900 timestep 3600.000000
 Maximum lake depth is 49.000000
