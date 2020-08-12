@@ -59,6 +59,11 @@ run_glm <- function(sim_folder = '.', verbose=TRUE, system.args=character()) {
 
   
 glm.systemcall <- function(sim_folder, glm_path, verbose, system.args) {
+  
+  if(nchar(Sys.getenv("GLM_PATH")) > 0){
+    glm_path <- Sys.getenv("GLM_PATH")
+  }
+  
   origin <- getwd()
   setwd(sim_folder)
   
