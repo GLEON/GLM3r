@@ -62,6 +62,9 @@ glm.systemcall <- function(sim_folder, glm_path, verbose, system.args) {
   
   if(nchar(Sys.getenv("GLM_PATH")) > 0){
     glm_path <- Sys.getenv("GLM_PATH")
+    warning(paste0(
+      "Custom path to GLM executable set via 'GLM_PATH' environment variable as: ", 
+      glm_path))
   }
   
   origin <- getwd()
