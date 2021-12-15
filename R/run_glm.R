@@ -71,7 +71,10 @@ glm.systemcall <- function(sim_folder, glm_path, verbose, system.args) {
   setwd(sim_folder)
   
   tryCatch({
-    if (verbose){
+    if (is.null(verbose)){
+      out <- system2(glm_path, wait = TRUE, stdout = TRUE, 
+                     stderr = NULL, args = system.args)
+    } else if (verbose) {
       out <- system2(glm_path, wait = TRUE, stdout = "", 
                      stderr = "", args = system.args)
     } else {
