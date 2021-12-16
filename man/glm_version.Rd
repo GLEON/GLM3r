@@ -4,7 +4,10 @@
 \alias{glm_version}
 \title{Return the current GLM model version}
 \usage{
-glm_version()
+glm_version(as_char = FALSE)
+}
+\arguments{
+\item{as_char}{return glm version as a character string? (TRUE/FALSE)}
 }
 \description{
 Returns the current version of the GLM model being used
