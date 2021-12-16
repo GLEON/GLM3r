@@ -9,7 +9,8 @@ run_glm(sim_folder = ".", verbose = TRUE, system.args = character())
 \arguments{
 \item{sim_folder}{the directory where simulation files are contained}
 
-\item{verbose}{Logical: Should output of GLM be shown}
+\item{verbose}{Logical: Should output of GLM be shown, or 
+use `NULL` to capture output as a character vector}
 
 \item{system.args}{Optional arguments to pass to GLM executable}
 }

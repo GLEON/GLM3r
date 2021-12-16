@@ -5,7 +5,8 @@
 #'The specified \code{sim_folder} must contain a valid NML file.
 #'
 #'@param sim_folder the directory where simulation files are contained
-#'@param verbose Logical: Should output of GLM be shown
+#'@param verbose Logical: Should output of GLM be shown, or 
+#' use `NULL` to capture output as a character vector
 #'@param system.args Optional arguments to pass to GLM executable
 #'
 #'@keywords methods
